@@ -33,7 +33,7 @@ A aplicação web, desenvolvida em WordPress, exibe um mapa que facilita a visua
 ## Resultados
 A aplicação desenvolvida oferece uma solução para a localização de um carrinho, devolvendo informações visuais e técnicas que comprovam seu funcionamento. O site exibe um mapa, onde o objeto rastreado pode ser visualizado em tempo real. 
 ### Imagem do protótipo
-![Esp32](./.img/esp32_prototipo.jpg)
+![Esp32](./.img/foto_esp_prototipo.jpeg)
 &nbsp;
 
 ### Visualização da Página
@@ -41,11 +41,11 @@ A aplicação desenvolvida oferece uma solução para a localização de um carr
 &nbsp;
 
 ### Visualização da Página
-![pagina_login](./assets/pag_login,jpg.jpg)
+![pagina_login](./assets/pag_login.jpg.jpg)
 &nbsp;
 
 ### Visualização da Página
-![pagina_mapa](./assets/pag_mapa.jpg.jpg)
+![pagina_mapa](./assets/pag_mapa_prototipo.png)
 &nbsp;
 
 ### Dificuldades enfrentadas ao longo do projeto
@@ -54,3 +54,31 @@ Durante o desenvolvimento do projeto, enfrentamos diversos desafios técnicos. O
 Além disso, a montagem da matriz para o mapa representou um obstáculo significativo. Criar uma grade precisa que pudesse representar a posição do carrinho no mapa de forma confiável demanda mais tempo e diversos refinamentos, tanto no layout da aplicação quanto no código que gerencia a interpretação dos dados.
 
 Por fim, o processo de triangulação e roteirização também apresentou desafios. Implementar algoritmos capazes de calcular com precisão a posição do carrinho sem os dados de posição ou grade tornou impossível prosseguir até esta etapa do projeto.
+&nbsp;
+
+## Testes de Desempenho
+### Teste de Tempo de Resposta
+O teste de tempo de resposta foi realizado para avaliar a eficiência do sistema de localização ao calcular a posição do ESP32 em relação a múltiplos pontos de acesso WiFi. Para isso, foram posicionados quatro dispositivos móveis (celulares) configurados como pontos de acesso WiFi em locais distintos em uma área de teste, permitindo que o ESP32 pudesse identificar múltiplas redes e calcular as distâncias. Durante o teste, o ESP32 foi configurado para escanear as redes WiFi e coletar dados de intensidade de sinal (RSSI) de cada ponto de acesso, registrando o tempo entre a solicitação de varredura e a resposta para cada medição. Esse processo foi repetido várias vezes em condições controladas para verificar a consistência dos tempos de resposta. Os dados coletados incluíram os valores de tempo de resposta e de RSSI obtidos a cada varredura, permitindo o cálculo de uma média para análise da eficiência do sistema e da sua capacidade de localização em tempo real.
+
+### Teste de Precisão de Localização
+O teste de tempo de resposta foi realizado para avaliar a eficiência do sistema de localização ao calcular a posição do ESP32 em relação a múltiplos pontos de acesso WiFi. Para isso, foram posicionados quatro dispositivos móveis (celulares) configurados como pontos de acesso WiFi em locais distintos em uma área de teste, permitindo que o ESP32 pudesse identificar múltiplas redes e calcular as distâncias. Durante o teste, o ESP32 foi configurado para escanear as redes WiFi e coletar dados de intensidade de sinal (RSSI) de cada ponto de acesso, registrando o tempo entre a solicitação de varredura e a resposta para cada medição. Esse processo foi repetido várias vezes em condições controladas para verificar a consistência dos tempos de resposta. Os dados coletados incluíram os valores de tempo de resposta e de RSSI obtidos a cada varredura, permitindo o cálculo de uma média para análise da eficiência do sistema e da sua capacidade de localização em tempo real.
+
+### Evidências dos testes:
+### Teste de Tempo de Resposta
+![Foto_pag_mapa](./assets/pag_mapa_prototipo.png)
+&nbsp;
+
+### Teste de Precisão de Localização
+![Monitor_serial](./assets/Monitor_serial_teste_de_precisão.png)
+&nbsp;
+
+## Resultados e Soluções Futuras
+No protótipo final, foi possível gerar uma estimativa inicial do posicionamento do objeto monitorado, mas ainda assim o sistema apresentou limitações significativas. Um dos principais desafios foi a atualização contínua da posição: para visualizar as novas posições, foi necessário atualizar a página manualmente, o que comprometeu a experiência de uso em tempo real. Além disso, a precisão da localização foi inferior ao esperado, em grande parte devido a dificuldades no cálculo da distância com base no nível de sinal (RSSI). A variação e a instabilidade do sinal Wi-Fi em ambientes internos, combinadas com interferências e obstáculos físicos, tornaram o cálculo da distância impreciso, refletindo diretamente na baixa qualidade da localização estimada.
+
+Outro aspecto não concluído foi o desenvolvimento de funções de criação de rotas, que permitiriam definir trajetos e monitorar o movimento do objeto de maneira mais detalhada. A falta de planejamento detalhado e a ausência de uma pesquisa mais aprofundada sobre alternativas técnicas práticas e compatíveis com as limitações do sistema foram causas fundamentais para essas limitações. O protótipo poderia ter sido beneficiado por uma escolha mais cuidadosa de tecnologias e métodos de localização que considerassem as variáveis do ambiente de uso. No geral, esses desafios destacam a importância do planejamento técnico prévio, que deveria incluir uma pesquisa robusta sobre tecnologias de localização, simulação de propagação de sinais em ambientes fechados e alternativas para atualização contínua de dados.
+&nbsp;
+
+
+
+
+
